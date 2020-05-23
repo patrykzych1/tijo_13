@@ -71,8 +71,8 @@ public class ShoppingCartTest {
     )
     void shouldNotDeleteProductFromShoppingCart(String productName, int amount) {
         final ShoppingCart shoppingCart = new ShoppingCart();
-        shoppingCart.addProducts("laptop", 3000, 1);
-        shoppingCart.addProducts("phone", 1000, 2);
+        shoppingCart.addProducts("laptop", 3000, -5);
+        shoppingCart.addProducts("phone", 1000, -3);
 
         final boolean result = shoppingCart.deleteProducts(productName, amount);
         assertFalse(result);
