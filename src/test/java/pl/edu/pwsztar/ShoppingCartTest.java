@@ -34,9 +34,9 @@ public class ShoppingCartTest {
     @DisplayName("Should not add product to shopping cart")
     @ParameterizedTest
     @CsvSource({
-            "laptop, 3000, 1",
-            "TV, 4500, 2",
-            "phone, 1000, 4"
+            "laptop, 3000, -1",
+            "TV, 4500, 800",
+            "phone, 1000, 0"
     })
     void shouldNotAddProductToShoppingCart(String productName, int price, int amount) {
         final ShoppingCart shoppingCart = new ShoppingCart();
@@ -54,8 +54,8 @@ public class ShoppingCartTest {
     )
     void shouldDeleteProductFromShoppingCart(String productName, int amount) {
         final ShoppingCart shoppingCart = new ShoppingCart();
-        shoppingCart.addProducts("laptop", 3000, 5);
-        shoppingCart.addProducts("phone", 1000, 10);
+        shoppingCart.addProducts("laptop", 3000, 1);
+        shoppingCart.addProducts("phone", 1000, 4);
 
         final boolean result = shoppingCart.deleteProducts(productName, amount);
         assertTrue(result);
@@ -78,7 +78,7 @@ public class ShoppingCartTest {
         assertFalse(result);
     }
 
-    @DisplayName("Should return quantity of product from Shoppng Cart")
+    @DisplayName("Should return quantity of product from Shopping Cart")
     @ParameterizedTest
     @CsvSource(
             {
@@ -87,7 +87,7 @@ public class ShoppingCartTest {
                     "phone, 4"
             }
     )
-    void shouldReturnQuantityOfProductsFromShoppingCart(String productName, int amount) {
+    void shouldReturnQuantityOfProductFromShoppingCart(String productName, int amount) {
         final ShoppingCart shoppingCart = new ShoppingCart();
         shoppingCart.addProducts("laptop", 3000, 1);
         shoppingCart.addProducts("TV", 4500, 2);
@@ -100,7 +100,7 @@ public class ShoppingCartTest {
 
     @DisplayName("Should return sum of price of all products in shoppng cart")
     @Test
-    void shouldReturnSumOfProductsPrceFromShoppingCart() {
+    void shouldReturnSumOfProductsPriceFromShoppingCart() {
         final ShoppingCart shoppingCart = new ShoppingCart();
         shoppingCart.addProducts("laptop", 3000, 2);
         shoppingCart.addProducts("TV", 4500, 1);
@@ -145,6 +145,8 @@ public class ShoppingCartTest {
 
         assertEquals(products, result);
     }
+
+
 
 
 
