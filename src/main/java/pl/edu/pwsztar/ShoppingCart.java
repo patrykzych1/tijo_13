@@ -77,7 +77,7 @@ public class ShoppingCart implements ShoppingCartOperation {
     public int getProductPrice(String productName) {
         productName = productName.toLowerCase();
         for(Product product: productsList) {
-            if(product.getName().equals(productName)) {
+            if(product.getName().toLowerCase().equals(productName.toLowerCase())) {
                 return product.getPrice();
             }
         }
